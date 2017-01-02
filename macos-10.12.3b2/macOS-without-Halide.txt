@@ -1,0 +1,56 @@
+# Setup macOS (works on macOS 10.12.2b3) render without Halide
+
+####
+# Updated: 2017-01-02 by Holger Eilhard <holger@eilhard.net>
+# Used with upstream commit: 8d323f09e77b010a4cfa5e9045c89dea107b0e34 (Date: Fri Dec 30 17:24:45 2016 -0800)
+# NOTE: This currently doesn't seem to work!
+####
+
+###
+# Install Xcode from Mac App Store
+###
+
+###
+# Install Homebrew
+###
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+
+###
+# Install git
+###
+brew install git python gflags glog wget curl wxpython wxmac
+brew link wxmac
+
+
+###
+# Install ffmpeg (from source!)
+###
+brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-libass --with-libquvi --with-libvorbis --with-libvpx --with-opus --with-x265
+
+
+###
+# Install Gooey
+###
+pip install --upgrade pip
+sudo pip install Gooey
+
+
+###
+# Install opencv
+###
+brew install opencv3 --HEAD
+brew link --force opencv3 --HEAD
+
+
+###
+# Get and install Surround360 (render without Halide)
+###
+mkdir ~/src; cd ~/src
+git clone https://github.com/facebook/Surround360 surround360
+cd ~/src/Surround360/surround360_render
+cmake -DCMAKE_BUILD_TYPE=Release
+make -j8
+
+echo "Now start the GUI:"
+echo "python scripts/run_all.py"
