@@ -188,41 +188,41 @@ sudo make install
 # Bootloader settings
 # Note: Please refer to the official guide on what you need to update to update the bootloader 
 ###
-#echo "Updating bootloader. Press Enter when ready."
-#read -n1 -r -p "Press any key to continue..." key
-#sudo cp $SRCDIR/conf/grub /etc/default/grub
-#sudo update-grub
+echo "Updating bootloader. Press Enter when ready."
+read -n1 -r -p "Press any key to continue..." key
+sudo cp $SRCDIR/conf/grub /etc/default/grub
+sudo update-grub
 
 
 ###
 # TODO 
 ###
-#echo "Configure ffserver. Press Enter when ready."
-#read -n1 -r -p "Press any key to continue..." key
-#sudo cp $SRCDIR/conf/ffserver-init.sh /etc/init.d
-#sudo cp $SRCDIR/conf/ffserver.conf /etc/
-#sudo update-rc.d ffserver-init.sh defaults
-#sudo service ffserver-init.sh start
+echo "Configure ffserver. Press Enter when ready."
+read -n1 -r -p "Press any key to continue..." key
+sudo cp $SRCDIR/conf/ffserver-init.sh /etc/init.d
+sudo cp $SRCDIR/conf/ffserver.conf /etc/
+sudo update-rc.d ffserver-init.sh defaults
+sudo service ffserver-init.sh start
 
 
 ###
 # TODO
 # Web interface
 ###
-#echo "Configure web interface. Press Enter when ready."
-#read -n1 -r -p "Press any key to continue..." key
-#sudo mkdir /var/www/surround360
-#sudo cp -r $SRCDIR/surround360/surround360_camera_ctl/source/www/camera_capture /var/www/surround360
+echo "Configure web interface. Press Enter when ready."
+read -n1 -r -p "Press any key to continue..." key
+sudo mkdir /var/www/surround360
+sudo cp -r $SRCDIR/surround360/surround360_camera_ctl/source/www/camera_capture /var/www/surround360
 
 
 ###
 # Webserver
 ###
-#echo "Configure web server. Press Enter when ready."
-#read -n1 -r -p "Press any key to continue..." key
-#sudo cp $SRCDIR/conf/000-camera.conf /etc/apache2/sites-available/
-#sudo ln -s /etc/apache2/sites-available/000-camera.conf /etc/apache2/sites-enabled/000-camera.conf
-#sudo /usr/sbin/service apache2 restart           
+echo "Configure web server. Press Enter when ready."
+read -n1 -r -p "Press any key to continue..." key
+sudo cp $SRCDIR/conf/000-camera.conf /etc/apache2/sites-available/
+sudo ln -s /etc/apache2/sites-available/000-camera.conf /etc/apache2/sites-enabled/000-camera.conf
+sudo /usr/sbin/service apache2 restart           
 
 
 ###
