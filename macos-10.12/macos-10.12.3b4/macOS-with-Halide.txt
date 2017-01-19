@@ -1,8 +1,8 @@
-# Setup macOS (works on macOS 10.12.2b3) render with Halide
+# Setup macOS (works on macOS 10.12.2b4) render with Halide
 
 ####
 # Updated: 2017-01-02 by Holger Eilhard <holger@eilhard.net>
-# Used with upstream commit: 8d323f09e77b010a4cfa5e9045c89dea107b0e34 (Date: Fri Dec 30 17:24:45 2016 -0800)
+# Used with upstream commit: 969eb0812f1b442b6a97b84ed14974632d8fa78b (Date: Thu Jan 19 11:04:21 2017 -0800)
 ####
 
 ###
@@ -49,7 +49,7 @@ brew install folly
 
 
 ###
-# Install ceres-solver (from source to work around possible versioning issues with Eigen!)
+# Install ceres-solver (make sure to build from source to work around possible versioning issues with Eigen!)
 ###
 brew install -s ceres-solver
 
@@ -66,6 +66,7 @@ cmake -DLLVM_ENABLE_TERMINFO=OFF -DLLVM_TARGETS_TO_BUILD="X86;ARM;NVPTX;AArch64;
 make -j8
 export LLVM_CONFIG=$HOME/src/llvm3.7/build/bin/llvm-config
 export LLVM_ROOT=$HOME/src/llvm3.7/build
+export LLVM_DIR=$HOME/src/llvm3.7/build/
 export CLANG=$HOME/src/llvm3.7/build/bin/clang
 
 
@@ -75,17 +76,20 @@ export CLANG=$HOME/src/llvm3.7/build/bin/clang
 cd ~/src
 git clone https://github.com/halide/Halide.git
 cd Halide
-mkdir cmake_build && cd cmake_build
-cmake -DLLVM_BIN=${LLVM_ROOT}/bin -DLLVM_INCLUDE="${LLVM_ROOT}/../include;${LLVM_ROOT}/include" -DLLVM_LIB=${LLVM_ROOT}/lib -DLLVM_VERSION=37 ..
-make -j8
+mkdir build && cd build
+make -f ../Makefile
 
 
 ###
-# Build surround360_render (with Halide)
+# Build surround360_render with Halide
 ###
-cd ~/src/Surround360/surround360_render
-cmake -DCMAKE_BUILD_TYPE=Release -DHALIDE_DIR=$HOME/src/Halide/cmake_build
+cd ~/src
+git clone https://github.com/facebook/Surround360/
+cd Surround360/surround360_render
+cmake -DCMAKE_BUILD_TYPE=Release -DHALIDE_DIR=$HOME/src/Halide/build
 make -j8
 
-echo "Now start the GUI:"
-echo "python scripts/run_all.py"
+###
+# Now you can start the GUI:
+# python ./scripts/run_all.py
+###

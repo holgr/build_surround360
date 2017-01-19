@@ -1,4 +1,4 @@
-# Setup macOS (works on macOS 10.12.2b3) render without Halide
+# Setup macOS (works on macOS 10.12.2b2) render without Halide
 
 ####
 # Updated: 2017-01-02 by Holger Eilhard <holger@eilhard.net>
