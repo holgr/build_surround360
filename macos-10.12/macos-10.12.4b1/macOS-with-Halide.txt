@@ -55,6 +55,12 @@ brew install -s ceres-solver
 
 
 ###
+# Install pillow
+###
+pip install pillow
+
+
+###
 # Install llvm
 ###
 cd ~/src
