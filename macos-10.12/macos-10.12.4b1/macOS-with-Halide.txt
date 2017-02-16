@@ -1,8 +1,8 @@
-# Setup macOS (works on macOS 10.12.4b1) render with Halide
+# Setup macOS (works on macOS 10.12.4b2 build 16E154a) render with Halide
 
 ####
-# Updated: 2017-01-25 by Holger Eilhard <holger@eilhard.net>
-# Used with upstream commit: 501ef0b5b5000d6afa6bd54318c7dcb343f49058 (Date: Tue Jan 24 18:14:00 2017 -0800)
+# Updated: 2017-02-16 by Holger Eilhard <holger@eilhard.net>
+# Used with upstream commit: ec1050766c7cfb7aaac328beeae900b9213de578 (Date: Wed Feb 15 17:31:38 2017 -0800)
 ####
 
 ###
