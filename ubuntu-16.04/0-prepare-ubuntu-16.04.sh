@@ -10,7 +10,7 @@
 # Save current dir for later packages
 ###
 SRCDIR=`pwd`
-
+mkdir ~/src
 
 ###
 # Freshen apt cache
@@ -130,7 +130,7 @@ read -n1 -r -p "Press any key to continue..." key
 
 cd ~/src
 wget https://github.com/opencv/opencv/archive/3.2.0.zip -O opencv-3.2.0.zip
-wget http://ffmpeg.org/releases/ffmpeg-3.2.2.tar.bz2
+wget http://ffmpeg.org/releases/ffmpeg-3.2.4.tar.bz2
 wget https://cmake.org/files/v3.7/cmake-3.7.1.tar.gz
 
 
@@ -144,7 +144,7 @@ sudo mkdir -p /usr/src
 #sudo tar -C /usr/src -xf flycapture2-2.10.3.266-amd64-pkg.tgz
 sudo tar -C /usr/src -xf cmake-3.7.1.tar.gz
 sudo unzip -d /usr/src opencv-3.2.0.zip
-sudo tar -C /usr/src -xf ffmpeg-3.2.2.tar.bz2
+sudo tar -C /usr/src -xf ffmpeg-3.2.4.tar.bz2
 
 
 ###
@@ -168,7 +168,7 @@ read -n1 -r -p "Press any key to continue..." key
 cd /usr/src
 sudo mkdir -p /usr/src/ffmpeg-build
 cd /usr/src/ffmpeg-build
-sudo ../ffmpeg-3.2.2/configure --enable-nonfree --enable-gpl --enable-libx264 --enable-shared --disable-stripping --enable-libvpx
+sudo ../ffmpeg-3.2.4/configure --enable-nonfree --enable-gpl --enable-libx264 --enable-shared --disable-stripping --enable-libvpx
 sudo make -j16
 sudo make install
 
@@ -206,13 +206,21 @@ sudo service ffserver-init.sh start
 
 
 ###
+# Prep finished, now get the official repository
+###
+echo "Ready to clone git repo now."
+read -n1 -r -p "Press any key to continue..." key
+cd ~/src
+git clone https://github.com/facebook/Surround360 surround360
+
+###
 # TODO
 # Web interface
 ###
 echo "Configure web interface. Press Enter when ready."
 read -n1 -r -p "Press any key to continue..." key
 sudo mkdir /var/www/surround360
-sudo cp -r $SRCDIR/surround360/surround360_camera_ctl/source/www/camera_capture /var/www/surround360
+sudo cp -r ~/src/surround360/surround360_camera_ctl/source/www/camera_capture /var/www/surround360
 
 
 ###
@@ -243,11 +251,4 @@ sudo mkdir /media/snoraid
 #sudo /bin/bash ./install_flycapture.sh
 
 
-###
-# Prep finished, now get the official repository
-###
-echo "Ready to clone git repo now."
-read -n1 -r -p "Press any key to continue..." key
-cd ~/src
-git clone https://github.com/facebook/Surround360 surround360
 
