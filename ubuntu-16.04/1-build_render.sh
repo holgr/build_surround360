@@ -121,4 +121,3 @@ echo "./bin/TestRenderStereoPanorama --help"
 echo ""
 echo "Or use the GUI:"
 echo "python scripts/run_all.py"
-
