@@ -43,18 +43,25 @@ sudo make install
 
 
 ###
-# Install Halide
+# Install Holmap Part 1
 ###
-echo "Ready to install Halide."
-read -n1 -r -p "Press any key to continue..." key
-cd ~/src/
-git clone https://github.com/halide/Halide.git
-cd Halide
-mkdir cmake_build
-cd cmake_build
-export LLVM_ROOT=$HOME/src/llvm3.7/build
-cmake -DLLVM_BIN=${LLVM_ROOT}/bin -DLLVM_INCLUDE="${LLVM_ROOT}/../include;${LLVM_ROOT}/include" -DLLVM_LIB=${LLVM_ROOT}/lib -DLLVM_VERSION=37 ..
-make -j16
+sudo apt-get install -y \
+    cmake \
+    build-essential \
+    libboost-all-dev \
+    libeigen3-dev \
+    libfreeimage-dev \
+    libgoogle-glog-dev \
+    libgflags-dev \
+    libglew-dev \
+    freeglut3-dev \
+    qt5-default \
+    libxmu-dev \
+    libxi-dev \
+    python-pil \
+    libtinfo-dev \
+    libjpeg-dev
+    
 
 
 ###
@@ -70,6 +77,34 @@ cmake ..
 make -j16
 sudo make install
 sudo ln -s /usr/include/eigen3/Eigen /usr/local/include/Eigen
+
+
+###
+# Install Holmap Part 2
+###
+
+cd ~/src
+git clone https://github.com/colmap/colmap
+cd colmap
+mkdir build
+cd build
+cmake ..
+make -j16
+
+
+###
+# Install Halide
+###
+echo "Ready to install Halide."
+read -n1 -r -p "Press any key to continue..." key
+cd ~/src/
+git clone https://github.com/halide/Halide.git
+cd Halide
+mkdir cmake_build
+cd cmake_build
+export LLVM_ROOT=$HOME/src/llvm3.7/build
+cmake -DLLVM_BIN=${LLVM_ROOT}/bin -DLLVM_INCLUDE="${LLVM_ROOT}/../include;${LLVM_ROOT}/include" -DLLVM_LIB=${LLVM_ROOT}/lib -DLLVM_VERSION=37 ..
+make -j16
 
 
 ###
