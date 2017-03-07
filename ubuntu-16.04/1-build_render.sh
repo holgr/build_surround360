@@ -27,6 +27,7 @@ cmake -DLLVM_ENABLE_TERMINFO=OFF -DLLVM_TARGETS_TO_BUILD="X86;ARM;NVPTX;AArch64;
 make -j16
 export LLVM_CONFIG=$HOME/src/llvm3.7/build/bin/llvm-config
 export CLANG=$HOME/src/llvm3.7/build/bin/clang
+export LLVM_DIR=$HOME/src/llvm3.7/build/
 
 
 ###
@@ -90,6 +91,7 @@ mkdir build
 cd build
 cmake ..
 make -j16
+sudo make install
 
 
 ###
