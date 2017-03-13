@@ -13,6 +13,7 @@
 # Install Homebrew
 ###
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew tap homebrew/science
 
 
 ###
@@ -25,7 +26,7 @@ brew link wxmac
 ###
 # Install ffmpeg (from source!)
 ###
-brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-libass --with-libquvi --with-libvorbis --with-libvpx --with-opus --with-x265
+brew install ffmpeg --with-fdk-aac --with-sdl2 --with-ffplay --with-freetype --with-libass --with-libquvi --with-libvorbis --with-libvpx --with-opus --with-x265
 
 
 ###
@@ -38,7 +39,7 @@ sudo pip install Gooey
 ###
 # Install opencv
 ###
-brew install opencv3 --HEAD
+brew install --force opencv3 --HEAD
 brew link --force opencv3 --HEAD
 
 
@@ -79,7 +80,6 @@ export CLANG=$HOME/src/llvm3.7/build/bin/clang
 ###
 # Install colmap deps
 ###
-brew tap homebrew/science
 brew install \
     cmake \
     boost \
