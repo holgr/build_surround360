@@ -77,6 +77,47 @@ export CLANG=$HOME/src/llvm3.7/build/bin/clang
 
 
 ###
+# Install colmap deps
+###
+brew tap homebrew/science
+brew install \
+    cmake \
+    boost \
+    eigen \
+    freeimage \
+    glog \
+    gflags \
+    suite-sparse \
+    qt5 \
+    glew
+
+brew link --force qt5
+
+# This is correct as of qt5-5.8.0_1 (Will need to be updated if someone updates QT5)
+# Source: https://github.com/Homebrew/legacy-homebrew/issues/29938#issuecomment-104722532
+sudo ln -s /usr/local/Cellar/qt5/5.8.0_1/mkspecs/ /usr/local/mkspecs
+sudo ln -s /usr/local/Cellar/qt5/5.8.0_1/plugins/ /usr/local/plugins
+
+
+###
+# Install colmap
+###
+cd ~/src
+git clone https://github.com/colmap/colmap
+cd colmap
+mkdir build
+cd build
+cmake ..
+make -j8
+
+
+###
+# Unlink qt5 (to be safe) 
+###
+brew unlink qt5
+
+
+###
 # Install Halide
 ###
 cd ~/src
