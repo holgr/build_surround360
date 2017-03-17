@@ -44,7 +44,7 @@ echo "Ready to install camera_control_ui (with Halide)"
 read -n1 -r -p "Press any key to continue..." key
 cd ~/src/surround360/surround360_camera_ctl_ui
 cmake -DCMAKE_BUILD_TYPE=Release -DHALIDE_DIR=$HOME/src/Halide/cmake_build
-make -j16
+make -j
 
 
 echo "Now try using this: "

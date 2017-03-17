@@ -156,7 +156,7 @@ cd /usr/src/
 sudo mkdir -p cmake-build
 cd cmake-build
 sudo ../cmake-3.7.1/configure
-sudo make -j16
+sudo make -j
 sudo make install
 
 
@@ -169,7 +169,7 @@ cd /usr/src
 sudo mkdir -p /usr/src/ffmpeg-build
 cd /usr/src/ffmpeg-build
 sudo ../ffmpeg-3.2.4/configure --enable-nonfree --enable-gpl --enable-libx264 --enable-shared --disable-stripping --enable-libvpx
-sudo make -j16
+sudo make -j
 sudo make install
 
 
@@ -180,7 +180,7 @@ echo "Install opencv. Press Enter when ready."
 read -n1 -r -p "Press any key to continue..." key
 cd /usr/src/opencv-3.2.0
 sudo cmake -DWITH_IPP=NO .
-sudo make -j16
+sudo make -j
 sudo make install
 
 

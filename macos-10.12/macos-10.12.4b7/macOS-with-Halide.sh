@@ -69,7 +69,7 @@ svn co https://llvm.org/svn/llvm-project/cfe/branches/release_37 llvm3.7/tools/c
 cd llvm3.7
 mkdir build && cd build
 cmake -DLLVM_ENABLE_TERMINFO=OFF -DLLVM_TARGETS_TO_BUILD="X86;ARM;NVPTX;AArch64;Mips;PowerPC" -DLLVM_ENABLE_ASSERTIONS=ON -DCMAKE_BUILD_TYPE=Release ..
-make -j8
+make -j
 export LLVM_CONFIG=$HOME/src/llvm3.7/build/bin/llvm-config
 export LLVM_ROOT=$HOME/src/llvm3.7/build
 export LLVM_DIR=$HOME/src/llvm3.7/build/
@@ -83,7 +83,7 @@ cd ~/src
 git clone https://github.com/halide/Halide.git
 cd Halide
 mkdir build && cd build
-make -f ../Makefile
+make -j -f ../Makefile
 
 
 ###
@@ -93,7 +93,7 @@ cd ~/src
 git clone https://github.com/facebook/Surround360/
 cd Surround360/surround360_render
 cmake -DCMAKE_BUILD_TYPE=Release -DHALIDE_DIR=$HOME/src/Halide/build
-make -j8
+make -j
 
 ###
 # Now you can start the GUI:

@@ -11,7 +11,7 @@
 ###
 cd surround360/surround360_camera_ctl
 cmake -DCMAKE_BUILD_TYPE=Release
-make -j16
+make -j
 
 echo "Now try using this: "
 echo "./bin/CameraControl -list"
