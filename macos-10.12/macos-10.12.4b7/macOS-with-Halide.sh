@@ -13,6 +13,7 @@
 # Install Homebrew
 ###
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew tap homebrew/science
 
 
 ###
@@ -25,7 +26,7 @@ brew link wxmac
 ###
 # Install ffmpeg (from source!)
 ###
-brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-libass --with-libquvi --with-libvorbis --with-libvpx --with-opus --with-x265
+brew install ffmpeg --with-fdk-aac --with-sdl2 --with-ffplay --with-freetype --with-libass --with-libquvi --with-libvorbis --with-libvpx --with-opus --with-x265
 
 
 ###
@@ -38,7 +39,7 @@ sudo pip install Gooey
 ###
 # Install opencv
 ###
-brew install opencv3 --HEAD
+brew install --force opencv3 --HEAD
 brew link --force opencv3 --HEAD
 
 
@@ -74,6 +75,46 @@ export LLVM_CONFIG=$HOME/src/llvm3.7/build/bin/llvm-config
 export LLVM_ROOT=$HOME/src/llvm3.7/build
 export LLVM_DIR=$HOME/src/llvm3.7/build/
 export CLANG=$HOME/src/llvm3.7/build/bin/clang
+
+
+###
+# Install colmap deps
+###
+brew install \
+    cmake \
+    boost \
+    eigen \
+    freeimage \
+    glog \
+    gflags \
+    suite-sparse \
+    qt5 \
+    glew
+
+brew link --force qt5
+
+# This is correct as of qt5-5.8.0_1 (Will need to be updated if someone updates QT5)
+# Source: https://github.com/Homebrew/legacy-homebrew/issues/29938#issuecomment-104722532
+sudo ln -s /usr/local/Cellar/qt5/5.8.0_1/mkspecs/ /usr/local/mkspecs
+sudo ln -s /usr/local/Cellar/qt5/5.8.0_1/plugins/ /usr/local/plugins
+
+
+###
+# Install colmap
+###
+cd ~/src
+git clone https://github.com/colmap/colmap
+cd colmap
+mkdir build
+cd build
+cmake ..
+make -j8
+
+
+###
+# Unlink qt5 (to be safe) 
+###
+brew unlink qt5
 
 
 ###

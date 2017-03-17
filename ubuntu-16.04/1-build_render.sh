@@ -47,9 +47,9 @@ sudo make install
 
 
 ###
-# Install Holmap Part 1
+# Install Colmap Part 1
 ###
-echo "Ready to install Holmap (pt 1)."
+echo "Ready to install Colmap (pt 1)."
 read -n1 -r -p "Press any key to continue..." key
 sudo apt-get install -y \
     cmake \
@@ -88,9 +88,9 @@ sudo ln -s /usr/include/eigen3/Eigen /usr/local/include/Eigen
 
 
 ###
-# Install Holmap Part 2
+# Install Colmap Part 2
 ###
-echo "Ready to install Holmap (pt 2)."
+echo "Ready to install Colmap (pt 2)."
 read -n1 -r -p "Press any key to continue..." key
 cd ~/src
 git clone https://github.com/colmap/colmap
